@@ -17,6 +17,25 @@ export default function ConjugationDetailPage({ params }: PageProps) {
   const [isShowing, setIsShowing] = useState(false);
   const [currentVerbIndex, setCurrentVerbIndex] = useState(0);
   const [language, setLanguage] = useState<Language>("hu");
+  const [correctStatus, setCorrectStatus] = useState<boolean[]>(new Array(verbs.length).fill(false));
+
+  const getRandomVerb = () => {
+    // Súlyozás: helyes = 1x, rossz = 5x valószínűség
+    const weights = correctStatus.map(isCorrect => isCorrect ? 1 : 5);
+    const totalWeight = weights.reduce((a, b) => a + b, 0);
+    let random = Math.random() * totalWeight;
+
+    for (let i = 0; i < weights.length; i++) {
+      random -= weights[i];
+      if (random <= 0) {
+        setCurrentVerbIndex(i);
+        setIsShowing(false);
+        return;
+      }
+    }
+  };
+
+  const correctCount = correctStatus.filter(Boolean).length;
 
   const verbId = parseInt(params.id, 10);
 
@@ -51,15 +70,27 @@ export default function ConjugationDetailPage({ params }: PageProps) {
 
   const handleShowOrNext = () => {
     if (isShowing) {
-      // Next mode: advance to next verb and hide
-      if (currentVerbIndex < verbs.length - 1) {
-        setCurrentVerbIndex(currentVerbIndex + 1);
-        setIsShowing(false);
-      }
+      // Mark as incorrect and get new verb
+      setCorrectStatus(prev => {
+        const newStatus = [...prev];
+        newStatus[currentVerbIndex] = false;
+        return newStatus;
+      });
+      getRandomVerb();
     } else {
       // Show mode: toggle to show
       setIsShowing(true);
     }
+  };
+
+  const handleCorrect = () => {
+    // Mark as correct and get new verb
+    setCorrectStatus(prev => {
+      const newStatus = [...prev];
+      newStatus[currentVerbIndex] = true;
+      return newStatus;
+    });
+    getRandomVerb();
   };
 
   const toggleLanguage = () => {
@@ -79,6 +110,9 @@ export default function ConjugationDetailPage({ params }: PageProps) {
           >
             ←
           </button>
+          <div className="text-center font-bold text-black dark:text-white">
+            {correctCount}/{verbs.length}
+          </div>
           <button
             onClick={toggleLanguage}
             className="
@@ -108,7 +142,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                 Magyar
               </p>
-              <p className="text-3xl font-bold text-black dark:text-white">
+              <p className="text-4xl font-bold text-black dark:text-white">
                 {currentVerb.hungarian}
               </p>
             </div>
@@ -120,7 +154,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Szótári alak
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.german_infinitive}
                         </p>
                       </div>
@@ -128,7 +162,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Múlt idő (1. személyű)
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.german_present_first_person}
                         </p>
                       </div>
@@ -136,7 +170,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Befejezett melléknév
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.german_past_participle}
                         </p>
                       </div>
@@ -151,7 +185,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                       Magyar
                     </p>
-                    <p className="text-4xl font-bold text-black dark:text-white">
+                    <p className="text-5xl font-bold text-black dark:text-white">
                       {currentVerb.hungarian}
                     </p>
                   </div>
@@ -229,7 +263,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Magyar
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.hungarian}
                         </p>
                       </div>
@@ -237,7 +271,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Múlt idő (1. személyű)
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.german_present_first_person}
                         </p>
                       </div>
@@ -245,7 +279,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
                         <p className="text-xs text-gray-600 dark:text-gray-400">
                           Befejezett melléknév
                         </p>
-                        <p className="text-2xl font-bold text-black dark:text-white">
+                        <p className="text-3xl font-bold text-black dark:text-white">
                           {currentVerb.german_past_participle}
                         </p>
                       </div>
@@ -323,23 +357,57 @@ export default function ConjugationDetailPage({ params }: PageProps) {
 
       {/* Footer */}
       <footer className="md:hidden px-4 py-6 border-t-2 border-black dark:border-white">
-        <button
-          onClick={handleShowOrNext}
-          disabled={isShowing && currentVerbIndex === verbs.length - 1}
-          className="
-            w-full px-6 py-4
-            border-2 border-black dark:border-white
-            font-bold text-lg
-            text-black dark:text-white
-            bg-white dark:bg-black
-            hover:bg-gray-100 dark:hover:bg-gray-900
-            active:bg-gray-200 dark:active:bg-gray-800
-            disabled:opacity-50 disabled:cursor-not-allowed
-            transition-colors
-          "
-        >
-          {isShowing ? "Következő" : "Megjelenítés"}
-        </button>
+        {isShowing ? (
+          <div className="flex gap-3">
+            <button
+              onClick={handleShowOrNext}
+              className="
+                flex-1 px-6 py-4
+                border-2 border-black dark:border-white
+                font-bold text-lg
+                text-black dark:text-white
+                bg-white dark:bg-black
+                hover:bg-gray-100 dark:hover:bg-gray-900
+                active:bg-gray-200 dark:active:bg-gray-800
+                transition-colors
+              "
+            >
+              Rossz
+            </button>
+            <button
+              onClick={handleCorrect}
+              className="
+                w-16 h-16 aspect-square
+                border-2 border-black dark:border-white
+                font-bold text-2xl
+                text-black dark:text-white
+                bg-green-100 dark:bg-green-900
+                hover:bg-green-200 dark:hover:bg-green-800
+                active:bg-green-300 dark:active:bg-green-700
+                transition-colors
+                flex items-center justify-center
+              "
+            >
+              ✓
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={handleShowOrNext}
+            className="
+              w-full px-6 py-4
+              border-2 border-black dark:border-white
+              font-bold text-lg
+              text-black dark:text-white
+              bg-white dark:bg-black
+              hover:bg-gray-100 dark:hover:bg-gray-900
+              active:bg-gray-200 dark:active:bg-gray-800
+              transition-colors
+            "
+          >
+            Megjelenítés
+          </button>
+        )}
       </footer>
     </div>
   );

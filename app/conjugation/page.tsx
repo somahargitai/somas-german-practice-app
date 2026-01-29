@@ -47,7 +47,7 @@ export default function ConjugationPage() {
                   active:bg-gray-200 dark:active:bg-gray-800
                   transition-colors
                   text-black dark:text-white font-medium
-                  text-sm md:text-lg
+                  text-base md:text-xl
                   flex items-center justify-between
                 ">
                   <span>{option.title}</span>

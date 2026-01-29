@@ -28,7 +28,7 @@ export function MenuButton({ href, icon, label }: MenuButtonProps) {
         <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center text-black dark:text-white flex-shrink-0">
           {icon}
         </div>
-        <span className="text-xs md:text-sm font-medium text-center">{label}</span>
+        <span className="text-sm md:text-base font-medium text-center">{label}</span>
       </button>
     </Link>
   );
