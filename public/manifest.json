@@ -1,0 +1,22 @@
+{
+  "name": "Igéragozás Gyakorló",
+  "short_name": "Igéragozás",
+  "description": "German verb conjugation practice app",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [],
+  "screenshots": [],
+  "categories": ["education"],
+  "shortcuts": [
+    {
+      "name": "Igeragozás",
+      "short_name": "Igeragozás",
+      "description": "German verb conjugation practice",
+      "url": "/conjugation"
+    }
+  ]
+}
