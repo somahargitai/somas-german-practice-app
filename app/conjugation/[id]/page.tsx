@@ -104,7 +104,7 @@ export default function ConjugationDetailPage({ params }: PageProps) {
           // Hungarian view
           <>
             {/* Mobile: Hungarian on top, German in middle, button on bottom */}
-            <div className="md:hidden text-center">
+            <div className="md:hidden text-center pb-6">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                 Magyar
               </p>

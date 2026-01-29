@@ -12,7 +12,7 @@ Egy modern, reszponzív webapplikáció német igék múlt idejű alakjainak gya
 
 ## Szerkezet
 
-```
+```bash
 .
 ├── app/                      # Next.js App Router
 │   ├── page.tsx             # Nyitóoldal (8 menügomb 2x4 elrendezésben)
@@ -40,23 +40,28 @@ Egy modern, reszponzív webapplikáció német igék múlt idejű alakjainak gya
 ## Telepítés
 
 ### Előfeltételek
+
 - Node.js 18+
 - npm vagy yarn
 
 ### Lépések
 
 1. **Függőségek telepítése**
+
 ```bash
 npm install
 ```
 
-2. **Dev szerver indítása**
+1. **Dev szerver indítása**
+
 ```bash
 npm run dev
 ```
+
 Az alkalmazás megnyitható a `http://localhost:3000` alatt.
 
-3. **Production build**
+1. **Production build**
+
 ```bash
 npm run build
 npm start
@@ -73,9 +78,11 @@ npm start
 ## Használat
 
 ### Nyitóoldal
+
 8 gomb 2x4 elrendezésben (4 oszlop desktopkon, 2 oszlop telefonon).
 
 ### Igéragozás gyakorlat
+
 1. Kattintson az "Igeragozás" gombra a nyitóoldalon
 2. Válasszon egy gyakorlatot a listából
 3. Az első praktikával már lehet szöveggel gyakorlni:
@@ -89,6 +96,7 @@ npm start
 Az igék a `lib/verbs.ts` fájlban vannak tárolva. Jelenleg 20 ige van a listában, ebből az első gyakorlat (múlt idejű alakok / 1) tartalmas.
 
 Az igék formátuma:
+
 ```typescript
 {
   id: number;
