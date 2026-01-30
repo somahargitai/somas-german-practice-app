@@ -1,9 +1,9 @@
 "use client";
 
-import { Verb } from "@/lib/verbs";
+import { VerbConjugation } from "@/lib/verbs";
 
 interface ConjugationContentProps {
-  currentVerb: Verb;
+  currentVerb: VerbConjugation;
   language: "hu" | "de";
   isShowing: boolean;
 }
