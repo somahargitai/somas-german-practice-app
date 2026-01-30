@@ -2,15 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function ConjugationPlaceholderPage({ params }: PageProps) {
+export default function ConjugationPage7() {
   const router = useRouter();
-  const verbId = parseInt(params.id, 10);
 
   return (
     <div className="min-h-screen bg-white dark:bg-black grid grid-rows-[auto_1fr_auto]">
@@ -26,7 +19,7 @@ export default function ConjugationPlaceholderPage({ params }: PageProps) {
       <main className="flex items-center justify-center px-4">
         <div className="text-center">
           <h2 className="text-9xl font-bold text-black dark:text-white">
-            {verbId}
+            7
           </h2>
         </div>
       </main>

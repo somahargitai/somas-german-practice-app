@@ -6,12 +6,15 @@ import { useRouter } from "next/navigation";
 export default function ConjugationPage() {
   const router = useRouter();
 
-  const options = Array.from({ length: 20 }, (_, i) => {
-    if (i === 0) {
-      return { id: 1, title: "Múlt idejű alakok / 1" };
-    }
-    return { id: i + 1, title: `Opció ${i + 1} (placeholder)` };
-  });
+  const options = [
+    { id: 1, title: "Múlt idejű alakok / 1" },
+    { id: 2, title: "Múlt idejű alakok / 1 - magolás" },
+    { id: 3, title: "Opció 3 (placeholder)" },
+    { id: 4, title: "Opció 4 (placeholder)" },
+    { id: 5, title: "Opció 5 (placeholder)" },
+    { id: 6, title: "Opció 6 (placeholder)" },
+    { id: 7, title: "Opció 7 (placeholder)" },
+  ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-black flex flex-col">
@@ -36,11 +39,9 @@ export default function ConjugationPage() {
         <div className="w-full md:w-96">
           <nav className="divide-y-2 divide-black dark:divide-white">
             {options.map((option) => (
-              <Link
-                key={option.id}
-                href={`/conjugation/${option.id}`}
-              >
-                <button className="
+              <Link key={option.id} href={`/conjugation/${option.id}`}>
+                <button
+                  className="
                   w-full text-left px-4 md:px-6 py-4 md:py-6
                   border-b-2 border-black dark:border-white last:border-b-0
                   hover:bg-gray-100 dark:hover:bg-gray-900
@@ -49,7 +50,8 @@ export default function ConjugationPage() {
                   text-black dark:text-white font-medium
                   text-base md:text-xl
                   flex items-center justify-between
-                ">
+                "
+                >
                   <span>{option.title}</span>
                   <span className="text-gray-400 dark:text-gray-600">→</span>
                 </button>
