@@ -4,6 +4,7 @@ export interface VerbConjugation {
   german_infinitive: string;
   german_present_first_person: string;
   german_past_participle: string;
+  auxiliary_verb: "haben" | "sein" | "haben/sein";
 }
 
 export const verbs: VerbConjugation[] = [
@@ -13,6 +14,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "backen",
     german_present_first_person: "backte",
     german_past_participle: "gebacken",
+    auxiliary_verb: "haben",
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "befehlen",
     german_present_first_person: "befahl",
     german_past_participle: "befohlen",
+    auxiliary_verb: "haben",
   },
   {
     id: 3,
@@ -27,6 +30,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "beginnen",
     german_present_first_person: "begann",
     german_past_participle: "begonnen",
+    auxiliary_verb: "haben",
   },
   {
     id: 4,
@@ -34,6 +38,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "heißen",
     german_present_first_person: "hieß",
     german_past_participle: "geheißen",
+    auxiliary_verb: "haben",
   },
   {
     id: 5,
@@ -41,6 +46,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "biegen",
     german_present_first_person: "bog",
     german_past_participle: "gebogen",
+    auxiliary_verb: "haben",
   },
   {
     id: 6,
@@ -48,6 +54,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "bieten",
     german_present_first_person: "bot",
     german_past_participle: "geboten",
+    auxiliary_verb: "haben",
   },
   {
     id: 7,
@@ -55,6 +62,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "bleiben",
     german_present_first_person: "blieb",
     german_past_participle: "geblieben",
+    auxiliary_verb: "sein",
   },
   {
     id: 8,
@@ -62,6 +70,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "brechen",
     german_present_first_person: "brach",
     german_past_participle: "gebrochen",
+    auxiliary_verb: "haben",
   },
   {
     id: 9,
@@ -69,6 +78,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "empfangen",
     german_present_first_person: "empfing",
     german_past_participle: "empfangen",
+    auxiliary_verb: "haben",
   },
   {
     id: 10,
@@ -76,6 +86,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "empfehlen",
     german_present_first_person: "empfahl",
     german_past_participle: "empfohlen",
+    auxiliary_verb: "haben",
   },
   {
     id: 11,
@@ -83,6 +94,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "empfinden",
     german_present_first_person: "empfand",
     german_past_participle: "empfunden",
+    auxiliary_verb: "haben",
   },
   {
     id: 12,
@@ -90,6 +102,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "essen",
     german_present_first_person: "aß",
     german_past_participle: "gegessen",
+    auxiliary_verb: "haben",
   },
   {
     id: 13,
@@ -97,6 +110,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fahren",
     german_present_first_person: "fuhr",
     german_past_participle: "gefahren",
+    auxiliary_verb: "haben/sein",
   },
   {
     id: 14,
@@ -104,6 +118,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fangen",
     german_present_first_person: "fing",
     german_past_participle: "gefangen",
+    auxiliary_verb: "haben",
   },
   {
     id: 15,
@@ -111,6 +126,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "finden",
     german_present_first_person: "fand",
     german_past_participle: "gefunden",
+    auxiliary_verb: "haben",
   },
   {
     id: 16,
@@ -118,6 +134,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fliegen",
     german_present_first_person: "flog",
     german_past_participle: "geflogen",
+    auxiliary_verb: "sein",
   },
   {
     id: 17,
@@ -125,6 +142,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fliehen",
     german_present_first_person: "floh",
     german_past_participle: "geflohen",
+    auxiliary_verb: "sein",
   },
   {
     id: 18,
@@ -132,6 +150,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fließen",
     german_present_first_person: "floss",
     german_past_participle: "geflossen",
+    auxiliary_verb: "sein",
   },
   {
     id: 19,
@@ -139,6 +158,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "fressen",
     german_present_first_person: "fraß",
     german_past_participle: "gefressen",
+    auxiliary_verb: "haben",
   },
   {
     id: 20,
@@ -146,6 +166,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "frieren",
     german_present_first_person: "fror",
     german_past_participle: "gefroren",
+    auxiliary_verb: "haben/sein",
   },
   {
     id: 21,
@@ -153,6 +174,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "geben",
     german_present_first_person: "gab",
     german_past_participle: "gegeben",
+    auxiliary_verb: "haben",
   },
   {
     id: 22,
@@ -160,6 +182,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gehen",
     german_present_first_person: "ging",
     german_past_participle: "gegangen",
+    auxiliary_verb: "sein",
   },
   {
     id: 23,
@@ -167,6 +190,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gelingen",
     german_present_first_person: "gelang",
     german_past_participle: "gelungen",
+    auxiliary_verb: "sein",
   },
   {
     id: 24,
@@ -174,6 +198,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gelten",
     german_present_first_person: "galt",
     german_past_participle: "gegolten",
+    auxiliary_verb: "haben",
   },
   {
     id: 25,
@@ -181,6 +206,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "genießen",
     german_present_first_person: "genoss",
     german_past_participle: "genossen",
+    auxiliary_verb: "haben",
   },
   {
     id: 26,
@@ -188,6 +214,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "geraten",
     german_present_first_person: "geriet",
     german_past_participle: "geraten",
+    auxiliary_verb: "sein",
   },
   {
     id: 27,
@@ -195,6 +222,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "geschehen",
     german_present_first_person: "geschah",
     german_past_participle: "geschehen",
+    auxiliary_verb: "sein",
   },
   {
     id: 28,
@@ -202,6 +230,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gewinnen",
     german_present_first_person: "gewann",
     german_past_participle: "gewonnen",
+    auxiliary_verb: "haben",
   },
   {
     id: 29,
@@ -209,6 +238,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gießen",
     german_present_first_person: "goss",
     german_past_participle: "gegossen",
+    auxiliary_verb: "haben",
   },
   {
     id: 30,
@@ -216,6 +246,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gleichen",
     german_present_first_person: "glich",
     german_past_participle: "geglichen",
+    auxiliary_verb: "haben",
   },
   {
     id: 31,
@@ -223,6 +254,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "gleiten",
     german_present_first_person: "glitt",
     german_past_participle: "geglitten",
+    auxiliary_verb: "sein",
   },
   {
     id: 32,
@@ -230,6 +262,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "graben",
     german_present_first_person: "grub",
     german_past_participle: "gegraben",
+    auxiliary_verb: "haben",
   },
   {
     id: 33,
@@ -237,6 +270,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "greifen",
     german_present_first_person: "griff",
     german_past_participle: "gegriffen",
+    auxiliary_verb: "haben",
   },
   {
     id: 34,
@@ -244,6 +278,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "halten",
     german_present_first_person: "hielt",
     german_past_participle: "gehalten",
+    auxiliary_verb: "haben",
   },
   {
     id: 35,
@@ -251,6 +286,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "hängen",
     german_present_first_person: "hing",
     german_past_participle: "gehangen",
+    auxiliary_verb: "haben",
   },
   {
     id: 36,
@@ -258,6 +294,7 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "heben",
     german_present_first_person: "hob",
     german_past_participle: "gehoben",
+    auxiliary_verb: "haben",
   },
   {
     id: 37,
@@ -265,5 +302,6 @@ export const verbs: VerbConjugation[] = [
     german_infinitive: "helfen",
     german_present_first_person: "half",
     german_past_participle: "geholfen",
+    auxiliary_verb: "haben",
   },
 ];

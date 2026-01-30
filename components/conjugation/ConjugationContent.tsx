@@ -46,6 +46,14 @@ export function ConjugationContent({
               </div>
               <div className="space-y-2">
                 <p className="text-xs text-gray-600 dark:text-gray-400">
+                  Segédige
+                </p>
+                <p className="text-3xl font-bold text-black dark:text-white">
+                  {currentVerb.auxiliary_verb}
+                </p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs text-gray-600 dark:text-gray-400">
                   Befejezett melléknév
                 </p>
                 <p className="text-3xl font-bold text-black dark:text-white">
@@ -85,6 +93,14 @@ export function ConjugationContent({
                     </p>
                     <p className="text-4xl font-bold text-black dark:text-white">
                       {currentVerb.german_present_first_person}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                      Segédige
+                    </p>
+                    <p className="text-4xl font-bold text-black dark:text-white">
+                      {currentVerb.auxiliary_verb}
                     </p>
                   </div>
                   <div>
@@ -137,6 +153,14 @@ export function ConjugationContent({
             </div>
             <div className="space-y-2">
               <p className="text-xs text-gray-600 dark:text-gray-400">
+                Segédige
+              </p>
+              <p className="text-3xl font-bold text-black dark:text-white">
+                {currentVerb.auxiliary_verb}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 Befejezett melléknév
               </p>
               <p className="text-3xl font-bold text-black dark:text-white">
@@ -176,6 +200,14 @@ export function ConjugationContent({
                   </p>
                   <p className="text-4xl font-bold text-black dark:text-white">
                     {currentVerb.german_present_first_person}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                    Segédige
+                  </p>
+                  <p className="text-4xl font-bold text-black dark:text-white">
+                    {currentVerb.auxiliary_verb}
                   </p>
                 </div>
                 <div>
