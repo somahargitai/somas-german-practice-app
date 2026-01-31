@@ -13,6 +13,11 @@ export default function ConjugationPage() {
     { id: "2b", title: "Igealakok - Csoport 2 - gyakorlás (12 szó)" },
     { id: "3a", title: "Igealakok - Csoport 3 - teszt (13 szó)" },
     { id: "3b", title: "Igealakok - Csoport 3 - gyakorlás (13 szó)" },
+    { id: "3", title: "Placeholder 3" },
+    { id: "4", title: "Placeholder 4" },
+    { id: "5", title: "Placeholder 5" },
+    { id: "6", title: "Placeholder 6" },
+    { id: "7", title: "Placeholder 7" },
   ];
 
   return (
