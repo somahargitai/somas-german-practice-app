@@ -1,7 +1,11 @@
 import { useState, useCallback } from "react";
-import { verbs } from "@/lib/verbs";
+import { VerbConjugation } from "@/lib/verbs";
 
-export function useConjugationState() {
+interface UseConjugationStateProps {
+  verbs: VerbConjugation[];
+}
+
+export function useConjugationState({ verbs }: UseConjugationStateProps) {
   const [isShowing, setIsShowing] = useState(false);
   const [currentVerbIndex, setCurrentVerbIndex] = useState(0);
   const [correctStatus, setCorrectStatus] = useState<boolean[]>(

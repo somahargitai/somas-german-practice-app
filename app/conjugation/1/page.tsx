@@ -20,7 +20,7 @@ export default function ConjugationPage1() {
     correctCount,
     handleShowOrNext,
     handleCorrect,
-  } = useConjugationState();
+  } = useConjugationState({ verbs });
 
   const toggleLanguage = () => {
     setLanguage(language === "hu" ? "de" : "hu");

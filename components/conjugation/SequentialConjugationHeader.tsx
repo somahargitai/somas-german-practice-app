@@ -6,6 +6,7 @@ import { ProgressBar } from "./ProgressBar";
 interface SequentialConjugationHeaderProps {
   currentIndex: number;
   furthestIndex: number;
+  total: number;
   language: "hu" | "de";
   onLanguageToggle: () => void;
 }
@@ -13,6 +14,7 @@ interface SequentialConjugationHeaderProps {
 export function SequentialConjugationHeader({
   currentIndex,
   furthestIndex,
+  total,
   language,
   onLanguageToggle,
 }: SequentialConjugationHeaderProps) {
@@ -44,7 +46,7 @@ export function SequentialConjugationHeader({
           {language === "hu" ? "🇩🇪 Német" : "🇭🇺 Magyar"}
         </button>
       </div>
-      <ProgressBar currentIndex={currentIndex} furthestIndex={furthestIndex} />
+      <ProgressBar currentIndex={currentIndex} furthestIndex={furthestIndex} total={total} />
     </header>
   );
 }

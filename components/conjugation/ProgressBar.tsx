@@ -1,14 +1,12 @@
 "use client";
 
-import { verbs } from "@/lib/verbs";
-
 interface ProgressBarProps {
   currentIndex: number;
   furthestIndex: number;
+  total: number;
 }
 
-export function ProgressBar({ currentIndex, furthestIndex }: ProgressBarProps) {
-  const total = verbs.length;
+export function ProgressBar({ currentIndex, furthestIndex, total }: ProgressBarProps) {
   const currentPercent = (currentIndex / total) * 100;
   const furthestPercent = (furthestIndex / total) * 100;
 

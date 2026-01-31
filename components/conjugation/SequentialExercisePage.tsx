@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { verbs } from "@/lib/verbs";
-import { SequentialConjugationHeader } from "@/components/conjugation/SequentialConjugationHeader";
-import { ConjugationFooter } from "@/components/conjugation/ConjugationFooter";
-import { ConjugationContent } from "@/components/conjugation/ConjugationContent";
+import { VerbConjugation } from "@/lib/verbs";
+import { SequentialConjugationHeader } from "./SequentialConjugationHeader";
+import { ConjugationFooter } from "./ConjugationFooter";
+import { ConjugationContent } from "./ConjugationContent";
 import { useSequentialConjugationState } from "@/hooks/useSequentialConjugationState";
 
 type Language = "hu" | "de";
 
-export default function ConjugationPage2() {
+interface SequentialExercisePageProps {
+  verbs: VerbConjugation[];
+}
+
+export function SequentialExercisePage({ verbs }: SequentialExercisePageProps) {
   const [language, setLanguage] = useState<Language>("hu");
   const {
     isShowing,
@@ -28,8 +32,11 @@ export default function ConjugationPage2() {
     setIsShowing(false);
   };
 
+  // Ensure indices are within bounds
+  const safeCurrentIndex = Math.min(currentVerbIndex, shuffledIndices.length - 1);
+  const safeVerbIndex = shuffledIndices[safeCurrentIndex] ?? 0;
   const currentVerb = !isCompleted
-    ? verbs[shuffledIndices[currentVerbIndex]]
+    ? verbs[safeVerbIndex]
     : null;
 
   return (
@@ -37,6 +44,7 @@ export default function ConjugationPage2() {
       <SequentialConjugationHeader
         currentIndex={currentVerbIndex}
         furthestIndex={furthestIndex}
+        total={verbs.length}
         language={language}
         onLanguageToggle={toggleLanguage}
       />

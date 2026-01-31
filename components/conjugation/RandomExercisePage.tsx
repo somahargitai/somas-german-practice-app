@@ -1,88 +1,58 @@
 "use client";
 
 import { useState } from "react";
-import { verbs } from "@/lib/verbs";
-import { SequentialConjugationHeader } from "@/components/conjugation/SequentialConjugationHeader";
-import { ConjugationFooter } from "@/components/conjugation/ConjugationFooter";
-import { ConjugationContent } from "@/components/conjugation/ConjugationContent";
-import { useSequentialConjugationState } from "@/hooks/useSequentialConjugationState";
+import { VerbConjugation } from "@/lib/verbs";
+import { ConjugationHeader } from "./ConjugationHeader";
+import { ConjugationFooter } from "./ConjugationFooter";
+import { ConjugationContent } from "./ConjugationContent";
+import { useConjugationState } from "@/hooks/useConjugationState";
 
 type Language = "hu" | "de";
 
-export default function ConjugationPage2() {
+interface RandomExercisePageProps {
+  verbs: VerbConjugation[];
+}
+
+export function RandomExercisePage({ verbs }: RandomExercisePageProps) {
   const [language, setLanguage] = useState<Language>("hu");
   const {
     isShowing,
     setIsShowing,
     currentVerbIndex,
-    furthestIndex,
-    isCompleted,
-    shuffledIndices,
+    correctCount,
     handleShowOrNext,
     handleCorrect,
-    handleReshuffle,
-  } = useSequentialConjugationState({ verbs });
+  } = useConjugationState({ verbs });
 
   const toggleLanguage = () => {
     setLanguage(language === "hu" ? "de" : "hu");
     setIsShowing(false);
   };
 
-  const currentVerb = !isCompleted
-    ? verbs[shuffledIndices[currentVerbIndex]]
-    : null;
+  // Ensure currentVerbIndex is within bounds
+  const safeIndex = Math.min(currentVerbIndex, verbs.length - 1);
+  const currentVerb = verbs[safeIndex] || verbs[0];
 
   return (
     <div className="min-h-screen bg-white dark:bg-black grid grid-rows-[auto_1fr_auto]">
-      <SequentialConjugationHeader
-        currentIndex={currentVerbIndex}
-        furthestIndex={furthestIndex}
+      <ConjugationHeader
+        correctCount={correctCount}
+        totalCount={verbs.length}
         language={language}
         onLanguageToggle={toggleLanguage}
       />
 
       <main className="px-4 py-6 md:px-8 md:py-8 overflow-y-auto md:flex md:items-center md:justify-center">
         <div className="w-full md:w-[672px] md:h-[600px] flex flex-col justify-between">
-          {isCompleted ? (
-            <div className="flex flex-col items-center justify-center flex-1 text-center space-y-6">
-              <div className="text-6xl">🎉</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">
-                Gratulálok!
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Az összes {verbs.length} szó helyes volt!
-              </p>
-              <p className="text-base text-gray-600 dark:text-gray-400">
-                Készen vagy arra, hogy újra próbálkozz?
-              </p>
-            </div>
-          ) : (
-            <ConjugationContent
-              currentVerb={currentVerb!}
-              language={language}
-              isShowing={isShowing}
-            />
-          )}
+          <ConjugationContent
+            currentVerb={currentVerb}
+            language={language}
+            isShowing={isShowing}
+          />
 
           {/* Desktop buttons - only visible on md and up */}
           <div className="hidden md:flex gap-3 w-full">
-          {isCompleted ? (
-            <button
-              onClick={handleReshuffle}
-              className="
-                w-full px-6 py-4
-                border-2 border-black dark:border-white
-                font-bold text-lg
-                text-black dark:text-white
-                bg-white dark:bg-black
-                hover:bg-gray-100 dark:hover:bg-gray-900
-                active:bg-gray-200 dark:active:bg-gray-800
-                transition-colors
-              "
-            >
-              Újrakeverés és újraindítás
-            </button>
-          ) : isShowing ? (
+          {isShowing ? (
             <>
               <button
                 onClick={handleShowOrNext}
@@ -139,10 +109,8 @@ export default function ConjugationPage2() {
 
       <ConjugationFooter
         isShowing={isShowing}
-        isCompleted={isCompleted}
         onShowOrNext={handleShowOrNext}
         onCorrect={handleCorrect}
-        onReshuffle={handleReshuffle}
       />
     </div>
   );

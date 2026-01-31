@@ -7,13 +7,12 @@ export default function ConjugationPage() {
   const router = useRouter();
 
   const options = [
-    { id: 1, title: "Múlt idejű alakok / 1" },
-    { id: 2, title: "Múlt idejű alakok / 1 - magolás" },
-    { id: 3, title: "Opció 3 (placeholder)" },
-    { id: 4, title: "Opció 4 (placeholder)" },
-    { id: 5, title: "Opció 5 (placeholder)" },
-    { id: 6, title: "Opció 6 (placeholder)" },
-    { id: 7, title: "Opció 7 (placeholder)" },
+    { id: "1a", title: "Igealakok - Csoport 1 - teszt (12 szó)" },
+    { id: "1b", title: "Igealakok - Csoport 1 - gyakorlás (12 szó)" },
+    { id: "2a", title: "Igealakok - Csoport 2 - teszt (12 szó)" },
+    { id: "2b", title: "Igealakok - Csoport 2 - gyakorlás (12 szó)" },
+    { id: "3a", title: "Igealakok - Csoport 3 - teszt (13 szó)" },
+    { id: "3b", title: "Igealakok - Csoport 3 - gyakorlás (13 szó)" },
   ];
 
   return (

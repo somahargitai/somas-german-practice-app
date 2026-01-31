@@ -1,5 +1,9 @@
 import { useState, useCallback, useEffect } from "react";
-import { verbs } from "@/lib/verbs";
+import { VerbConjugation } from "@/lib/verbs";
+
+interface UseSequentialConjugationStateProps {
+  verbs: VerbConjugation[];
+}
 
 function shuffleArray(array: number[]): number[] {
   const shuffled = [...array];
@@ -10,7 +14,9 @@ function shuffleArray(array: number[]): number[] {
   return shuffled;
 }
 
-export function useSequentialConjugationState() {
+export function useSequentialConjugationState({
+  verbs,
+}: UseSequentialConjugationStateProps) {
   const [isShowing, setIsShowing] = useState(false);
   const [currentVerbIndex, setCurrentVerbIndex] = useState(0);
   const [furthestIndex, setFurthestIndex] = useState(0);
