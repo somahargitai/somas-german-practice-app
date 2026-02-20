@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { ClipboardCheck, RefreshCw, MessageSquare } from "lucide-react";
 
 export default function ConjugationPage() {
   const router = useRouter();
@@ -50,18 +51,18 @@ export default function ConjugationPage() {
             {allOptions.map((option) => (
               <Link key={option.id} href={`/conjugation/${option.id}`}>
                 <div className="
-                  border-2 border-black dark:border-white
-                  p-4
+                  rounded-lg
+                  p-5 md:p-6
                   hover:bg-gray-100 dark:hover:bg-gray-900
                   active:bg-gray-200 dark:active:bg-gray-800
-                  transition-colors
+                  transition-all duration-200
                   flex items-center justify-between
                 ">
                   <div>
                     <div className="font-bold text-lg text-black dark:text-white">
                       {option.title}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {option.subtitle}
                     </div>
                   </div>
@@ -74,54 +75,64 @@ export default function ConjugationPage() {
           {/* Verb groups grid */}
           <div className="space-y-3 pt-4">
             {verbGroups.map((group) => (
-              <div key={group.number} className="grid grid-cols-3 gap-3">
-                {/* Test */}
-                <Link href={`/conjugation/${group.number}a`}>
-                  <div className="
-                    p-4 md:p-6
-                    hover:bg-gray-100 dark:hover:bg-gray-900
-                    active:bg-gray-200 dark:active:bg-gray-800
-                    transition-colors
-                    flex flex-col items-center justify-center gap-2
-                  ">
-                    <span className="text-5xl md:text-6xl">📋</span>
-                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
-                      Teszt
-                    </span>
-                  </div>
-                </Link>
+              <div key={group.number} className="flex items-center gap-3">
+                {/* Row index */}
+                <div className="flex-shrink-0 w-8 md:w-10 text-center">
+                  <span className="text-xl md:text-2xl font-bold text-black dark:text-white">
+                    {group.number}
+                  </span>
+                </div>
 
-                {/* Practice */}
-                <Link href={`/conjugation/${group.number}b`}>
-                  <div className="
-                    p-4 md:p-6
-                    hover:bg-gray-100 dark:hover:bg-gray-900
-                    active:bg-gray-200 dark:active:bg-gray-800
-                    transition-colors
-                    flex flex-col items-center justify-center gap-2
-                  ">
-                    <span className="text-5xl md:text-6xl">🔄</span>
-                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
-                      Gyakorlás
-                    </span>
-                  </div>
-                </Link>
+                {/* Icon grid */}
+                <div className="flex-1 grid grid-cols-3 gap-3">
+                  {/* Test */}
+                  <Link href={`/conjugation/${group.number}a`}>
+                    <div className="
+                      p-4 md:p-6
+                      hover:bg-gray-100 dark:hover:bg-gray-900
+                      active:bg-gray-200 dark:active:bg-gray-800
+                      transition-colors
+                      flex flex-col items-center justify-center gap-2
+                    ">
+                      <ClipboardCheck className="w-12 h-12 md:w-14 md:h-14 text-black dark:text-white" strokeWidth={1.5} />
+                      <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                        Teszt
+                      </span>
+                    </div>
+                  </Link>
 
-                {/* Sentences */}
-                <Link href={`/conjugation/sentences-${group.number}`}>
-                  <div className="
-                    p-4 md:p-6
-                    hover:bg-gray-100 dark:hover:bg-gray-900
-                    active:bg-gray-200 dark:active:bg-gray-800
-                    transition-colors
-                    flex flex-col items-center justify-center gap-2
-                  ">
-                    <span className="text-5xl md:text-6xl">💬</span>
-                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
-                      Mondatok
-                    </span>
-                  </div>
-                </Link>
+                  {/* Practice */}
+                  <Link href={`/conjugation/${group.number}b`}>
+                    <div className="
+                      p-4 md:p-6
+                      hover:bg-gray-100 dark:hover:bg-gray-900
+                      active:bg-gray-200 dark:active:bg-gray-800
+                      transition-colors
+                      flex flex-col items-center justify-center gap-2
+                    ">
+                      <RefreshCw className="w-12 h-12 md:w-14 md:h-14 text-black dark:text-white" strokeWidth={1.5} />
+                      <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                        Gyakorlás
+                      </span>
+                    </div>
+                  </Link>
+
+                  {/* Sentences */}
+                  <Link href={`/conjugation/sentences-${group.number}`}>
+                    <div className="
+                      p-4 md:p-6
+                      hover:bg-gray-100 dark:hover:bg-gray-900
+                      active:bg-gray-200 dark:active:bg-gray-800
+                      transition-colors
+                      flex flex-col items-center justify-center gap-2
+                    ">
+                      <MessageSquare className="w-12 h-12 md:w-14 md:h-14 text-black dark:text-white" strokeWidth={1.5} />
+                      <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                        Mondatok
+                      </span>
+                    </div>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
