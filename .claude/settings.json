@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(dd:*)",
+      "Bash(mkfs:*)",
+      "Bash(mount:*)",
+      "Bash(curl *| bash:*)",
+      "Bash(wget *| bash:*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)"
+    ]
+  },
+  "notes": {
+    "repo_intent": "Next.js + TypeScript + shadcn/ui project. Keep changes minimal and reversible."
+  }
+}
