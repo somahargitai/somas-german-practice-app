@@ -6,44 +6,27 @@ import { useRouter } from "next/navigation";
 export default function ConjugationPage() {
   const router = useRouter();
 
-  const options = [
-    { id: "all", title: "Igealakok - Teljes lista - gyakorlás (121 szó)" },
-    { id: "sentences-all", title: "Mondatok - Teljes lista - fordítás (példamondatok)" },
-    { id: "1a", title: "Igealakok - Csoport 1 - teszt (12 szó)" },
-    { id: "1b", title: "Igealakok - Csoport 1 - gyakorlás (12 szó)" },
-    { id: "sentences-1", title: "Mondatok - Csoport 1 - fordítás" },
-    { id: "2a", title: "Igealakok - Csoport 2 - teszt (12 szó)" },
-    { id: "2b", title: "Igealakok - Csoport 2 - gyakorlás (12 szó)" },
-    { id: "sentences-2", title: "Mondatok - Csoport 2 - fordítás" },
-    { id: "3a", title: "Igealakok - Csoport 3 - teszt (13 szó)" },
-    { id: "3b", title: "Igealakok - Csoport 3 - gyakorlás (13 szó)" },
-    { id: "sentences-3", title: "Mondatok - Csoport 3 - fordítás" },
-    { id: "4a", title: "Igealakok - Csoport 4 - teszt (13 szó)" },
-    { id: "4b", title: "Igealakok - Csoport 4 - gyakorlás (13 szó)" },
-    { id: "sentences-4", title: "Mondatok - Csoport 4 - fordítás" },
-    { id: "5a", title: "Igealakok - Csoport 5 - teszt (13 szó)" },
-    { id: "5b", title: "Igealakok - Csoport 5 - gyakorlás (13 szó)" },
-    { id: "sentences-5", title: "Mondatok - Csoport 5 - fordítás" },
-    { id: "6a", title: "Igealakok - Csoport 6 - teszt (13 szó)" },
-    { id: "6b", title: "Igealakok - Csoport 6 - gyakorlás (13 szó)" },
-    { id: "sentences-6", title: "Mondatok - Csoport 6 - fordítás" },
-    { id: "7a", title: "Igealakok - Csoport 7 - teszt (13 szó)" },
-    { id: "7b", title: "Igealakok - Csoport 7 - gyakorlás (13 szó)" },
-    { id: "sentences-7", title: "Mondatok - Csoport 7 - fordítás" },
-    { id: "8a", title: "Igealakok - Csoport 8 - teszt (13 szó)" },
-    { id: "8b", title: "Igealakok - Csoport 8 - gyakorlás (13 szó)" },
-    { id: "sentences-8", title: "Mondatok - Csoport 8 - fordítás" },
-    { id: "9a", title: "Igealakok - Csoport 9 - teszt (13 szó)" },
-    { id: "9b", title: "Igealakok - Csoport 9 - gyakorlás (13 szó)" },
-    { id: "sentences-9", title: "Mondatok - Csoport 9 - fordítás" },
-    { id: "10a", title: "Igealakok - Csoport 10 - teszt (13 szó)" },
-    { id: "10b", title: "Igealakok - Csoport 10 - gyakorlás (13 szó)" },
-    { id: "sentences-10", title: "Mondatok - Csoport 10 - fordítás" },
+  const verbGroups = [
+    { number: 1, count: 12 },
+    { number: 2, count: 12 },
+    { number: 3, count: 13 },
+    { number: 4, count: 13 },
+    { number: 5, count: 13 },
+    { number: 6, count: 13 },
+    { number: 7, count: 13 },
+    { number: 8, count: 13 },
+    { number: 9, count: 13 },
+    { number: 10, count: 13 },
+  ];
+
+  const allOptions = [
+    { id: "all", title: "Teljes lista - Gyakorlás", subtitle: "121 ige" },
+    { id: "sentences-all", title: "Teljes lista - Mondatok", subtitle: "Fordítási gyakorlás" },
   ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-black flex flex-col">
-      {/* Header - Fixed on mobile */}
+      {/* Header */}
       <header className="border-b-2 border-black dark:border-white bg-white dark:bg-black px-4 py-4 md:px-8 md:py-6">
         <div className="flex items-center gap-4">
           <button
@@ -59,30 +42,89 @@ export default function ConjugationPage() {
         </div>
       </header>
 
-      {/* Scrollable List */}
-      <div className="flex-1 overflow-y-auto md:flex md:justify-center md:px-8">
-        <div className="w-full md:w-96">
-          <nav className="divide-y-2 divide-black dark:divide-white">
-            {options.map((option) => (
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto px-4 py-6 md:px-8">
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* All options section */}
+          <div className="space-y-3">
+            {allOptions.map((option) => (
               <Link key={option.id} href={`/conjugation/${option.id}`}>
-                <button
-                  className="
-                  w-full text-left px-4 md:px-6 py-4 md:py-6
-                  border-b-2 border-black dark:border-white last:border-b-0
+                <div className="
+                  border-2 border-black dark:border-white
+                  p-4
                   hover:bg-gray-100 dark:hover:bg-gray-900
                   active:bg-gray-200 dark:active:bg-gray-800
                   transition-colors
-                  text-black dark:text-white font-medium
-                  text-base md:text-xl
                   flex items-center justify-between
-                "
-                >
-                  <span>{option.title}</span>
-                  <span className="text-gray-400 dark:text-gray-600">→</span>
-                </button>
+                ">
+                  <div>
+                    <div className="font-bold text-lg text-black dark:text-white">
+                      {option.title}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {option.subtitle}
+                    </div>
+                  </div>
+                  <span className="text-gray-400 dark:text-gray-600 text-xl">→</span>
+                </div>
               </Link>
             ))}
-          </nav>
+          </div>
+
+          {/* Verb groups grid */}
+          <div className="space-y-3 pt-4">
+            {verbGroups.map((group) => (
+              <div key={group.number} className="grid grid-cols-3 gap-3">
+                {/* Test */}
+                <Link href={`/conjugation/${group.number}a`}>
+                  <div className="
+                    p-4 md:p-6
+                    hover:bg-gray-100 dark:hover:bg-gray-900
+                    active:bg-gray-200 dark:active:bg-gray-800
+                    transition-colors
+                    flex flex-col items-center justify-center gap-2
+                  ">
+                    <span className="text-5xl md:text-6xl">📋</span>
+                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                      Teszt
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Practice */}
+                <Link href={`/conjugation/${group.number}b`}>
+                  <div className="
+                    p-4 md:p-6
+                    hover:bg-gray-100 dark:hover:bg-gray-900
+                    active:bg-gray-200 dark:active:bg-gray-800
+                    transition-colors
+                    flex flex-col items-center justify-center gap-2
+                  ">
+                    <span className="text-5xl md:text-6xl">🔄</span>
+                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                      Gyakorlás
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Sentences */}
+                <Link href={`/conjugation/sentences-${group.number}`}>
+                  <div className="
+                    p-4 md:p-6
+                    hover:bg-gray-100 dark:hover:bg-gray-900
+                    active:bg-gray-200 dark:active:bg-gray-800
+                    transition-colors
+                    flex flex-col items-center justify-center gap-2
+                  ">
+                    <span className="text-5xl md:text-6xl">💬</span>
+                    <span className="text-xs md:text-sm font-bold text-black dark:text-white text-center">
+                      Mondatok
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
