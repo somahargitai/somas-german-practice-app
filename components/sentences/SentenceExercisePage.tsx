@@ -11,9 +11,10 @@ type Language = "hu" | "de";
 
 interface SentenceExercisePageProps {
   sentences: SentenceExample[];
+  title?: string;
 }
 
-export function SentenceExercisePage({ sentences }: SentenceExercisePageProps) {
+export function SentenceExercisePage({ sentences, title }: SentenceExercisePageProps) {
   const [language, setLanguage] = useState<Language>("hu");
   const {
     isShowing,
@@ -47,6 +48,7 @@ export function SentenceExercisePage({ sentences }: SentenceExercisePageProps) {
         total={sentences.length}
         language={language}
         onLanguageToggle={toggleLanguage}
+        title={title}
       />
 
       <main className="px-4 py-6 md:px-8 md:py-8 overflow-y-auto md:flex md:items-center md:justify-center">

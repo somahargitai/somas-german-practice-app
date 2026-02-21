@@ -7,6 +7,7 @@ interface ConjugationHeaderProps {
   totalCount: number;
   language: "hu" | "de";
   onLanguageToggle: () => void;
+  title?: string;
 }
 
 export function ConjugationHeader({
@@ -14,6 +15,7 @@ export function ConjugationHeader({
   totalCount,
   language,
   onLanguageToggle,
+  title,
 }: ConjugationHeaderProps) {
   const router = useRouter();
 
@@ -28,7 +30,8 @@ export function ConjugationHeader({
           ←
         </button>
         <div className="text-center font-bold text-black dark:text-white">
-          {correctCount}/{totalCount}
+          {title && <div className="text-sm">{title}</div>}
+          <div>{correctCount}/{totalCount}</div>
         </div>
         <button
           onClick={onLanguageToggle}

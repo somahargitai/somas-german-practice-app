@@ -21,8 +21,9 @@ export default function ConjugationPage() {
   ];
 
   const allOptions = [
-    { id: "all", title: "Teljes lista - Gyakorlás", subtitle: "121 ige" },
-    { id: "sentences-all", title: "Teljes lista - Mondatok", subtitle: "Fordítási gyakorlás" },
+    { href: "/search", title: "Ige keresés", subtitle: "Szótár – minden ige" },
+    { href: "/conjugation/all", title: "Teljes lista - Gyakorlás", subtitle: "121 ige" },
+    { href: "/conjugation/sentences-all", title: "Teljes lista - Mondatok", subtitle: "Fordítási gyakorlás" },
   ];
 
   return (
@@ -49,7 +50,7 @@ export default function ConjugationPage() {
           {/* All options section */}
           <div className="space-y-3">
             {allOptions.map((option) => (
-              <Link key={option.id} href={`/conjugation/${option.id}`}>
+              <Link key={option.href} href={option.href}>
                 <div className="
                   rounded-lg
                   p-5 md:p-6

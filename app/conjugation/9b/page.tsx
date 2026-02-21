@@ -4,5 +4,5 @@ import { SequentialExercisePage } from "@/components/conjugation/SequentialExerc
 import { verbsGroup9 } from "@/lib/verbs-group-9";
 
 export default function ConjugationPage9b() {
-  return <SequentialExercisePage verbs={verbsGroup9} />;
+  return <SequentialExercisePage verbs={verbsGroup9} title="Practice - 9" />;
 }

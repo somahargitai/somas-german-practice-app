@@ -4,5 +4,5 @@ import { SentenceExercisePage } from "@/components/sentences/SentenceExercisePag
 import { sentencesGroup4 } from "@/lib/sentences-group-4";
 
 export default function Sentences4Page() {
-  return <SentenceExercisePage sentences={sentencesGroup4} />;
+  return <SentenceExercisePage sentences={sentencesGroup4} title="Sentences - 4" />;
 }

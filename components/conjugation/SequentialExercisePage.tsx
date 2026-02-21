@@ -11,9 +11,10 @@ type Language = "hu" | "de";
 
 interface SequentialExercisePageProps {
   verbs: VerbConjugation[];
+  title?: string;
 }
 
-export function SequentialExercisePage({ verbs }: SequentialExercisePageProps) {
+export function SequentialExercisePage({ verbs, title }: SequentialExercisePageProps) {
   const [language, setLanguage] = useState<Language>("hu");
   const {
     isShowing,
@@ -47,6 +48,7 @@ export function SequentialExercisePage({ verbs }: SequentialExercisePageProps) {
         total={verbs.length}
         language={language}
         onLanguageToggle={toggleLanguage}
+        title={title}
       />
 
       <main className="px-4 py-6 md:px-8 md:py-8 overflow-y-auto md:flex md:items-center md:justify-center">

@@ -9,6 +9,7 @@ interface SequentialConjugationHeaderProps {
   total: number;
   language: "hu" | "de";
   onLanguageToggle: () => void;
+  title?: string;
 }
 
 export function SequentialConjugationHeader({
@@ -17,6 +18,7 @@ export function SequentialConjugationHeader({
   total,
   language,
   onLanguageToggle,
+  title,
 }: SequentialConjugationHeaderProps) {
   const router = useRouter();
 
@@ -30,6 +32,11 @@ export function SequentialConjugationHeader({
         >
           ←
         </button>
+        {title && (
+          <div className="text-center font-bold text-sm text-black dark:text-white">
+            {title}
+          </div>
+        )}
         <button
           onClick={onLanguageToggle}
           className="
