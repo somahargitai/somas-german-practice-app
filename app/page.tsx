@@ -14,11 +14,11 @@ import {
 
 export default function Home() {
   const menuItems = [
-    { icon: <BookIcon />, label: "Igeragozás" },
+    { icon: <BookIcon />, label: "Igeragozás", href: "/conjugation" },
     { icon: <ClockIcon />, label: "Múlt idő" },
     { icon: <ArrowsIcon />, label: "Folyamatos" },
     { icon: <QuestionIcon />, label: "Feltételes" },
-    { icon: <GlobeIcon />, label: "Szókincs" },
+    { icon: <GlobeIcon />, label: "Szókincs", href: "/vocabulary" },
     { icon: <ChatIcon />, label: "Társalgás" },
     { icon: <LightningIcon />, label: "Nyelvtan" },
     { icon: <GearIcon />, label: "Beállítások" },
@@ -46,7 +46,7 @@ export default function Home() {
                 } ${!isLastRow ? "border-b-2" : ""}`}
               >
                 <MenuButton
-                  href={index === 0 ? "/conjugation" : `/placeholder/${index}`}
+                  href={item.href ?? `/placeholder/${index}`}
                   icon={item.icon}
                   label={item.label}
                 />
@@ -74,7 +74,7 @@ export default function Home() {
                 } ${!isLastRow ? "border-b-2 border-black dark:border-white" : ""}`}
               >
                 <MenuButton
-                  href={index === 0 ? "/conjugation" : `/placeholder/${index}`}
+                  href={item.href ?? `/placeholder/${index}`}
                   icon={item.icon}
                   label={item.label}
                 />
