@@ -4,7 +4,7 @@ import { MenuButton } from "@/components/MenuButton";
 import {
   BookIcon,
   ClockIcon,
-  ArrowsIcon,
+  TextIcon,
   QuestionIcon,
   GlobeIcon,
   ChatIcon,
@@ -16,7 +16,7 @@ export default function Home() {
   const menuItems = [
     { icon: <BookIcon />, label: "Igeragozás", href: "/conjugation" },
     { icon: <ClockIcon />, label: "Múlt idő" },
-    { icon: <ArrowsIcon />, label: "Folyamatos" },
+    { icon: <TextIcon />, label: "Gyakorló mondatok", href: "/sentences" },
     { icon: <QuestionIcon />, label: "Feltételes" },
     { icon: <GlobeIcon />, label: "Szókincs", href: "/vocabulary" },
     { icon: <ChatIcon />, label: "Társalgás" },
@@ -34,7 +34,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="flex-1 grid grid-cols-2 gap-0 border-t-2 border-l-2 border-black dark:border-white" style={{ gridAutoRows: '1fr' }}>
+        <div className="flex-1 min-h-0 grid grid-cols-2 auto-rows-fr gap-0 border-t-2 border-l-2 border-black dark:border-white">
           {menuItems.map((item, index) => {
             const isLastInRow = (index + 1) % 2 === 0;
             const isLastRow = index >= 6;

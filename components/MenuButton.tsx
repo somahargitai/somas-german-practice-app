@@ -15,20 +15,22 @@ export function MenuButton({ href, icon, label }: MenuButtonProps) {
       <button
         className="
           w-full h-full
-          aspect-square
           flex flex-col items-center justify-center
+          gap-2 md:gap-3
           bg-white dark:bg-black
           text-black dark:text-white
           hover:bg-gray-100 dark:hover:bg-gray-900
           active:bg-gray-200 dark:active:bg-gray-800
           transition-colors
-          p-4
+          p-3 md:p-4
         "
       >
-        <div className="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 flex items-center justify-center text-black dark:text-white flex-shrink-0">
+        <div className="w-9 h-9 sm:w-11 sm:h-11 md:w-14 md:h-14 flex items-center justify-center text-black dark:text-white flex-shrink-0">
           {icon}
         </div>
-        <span className="text-sm md:text-base font-medium text-center">{label}</span>
+        <span className="text-sm md:text-base font-medium text-center leading-tight">
+          {label}
+        </span>
       </button>
     </Link>
   );
