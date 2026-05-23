@@ -71,6 +71,17 @@ export function GearIcon() {
   );
 }
 
+export function DeclensionIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-full h-full">
+      <path d="M4 20l5-12 5 12" />
+      <path d="M6 15h6" />
+      <path d="M17 8v12" />
+      <path d="M14 17l3 3 3-3" />
+    </svg>
+  );
+}
+
 export function TextIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-full h-full">
