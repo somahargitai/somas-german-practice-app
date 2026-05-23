@@ -31,6 +31,27 @@ export const TYPE_LABELS: Record<WordType, string> = {
   other: "Egyéb",
 };
 
+// Gyakorlási módok – a szavak ismétlési logikája
+export type VocabExerciseMode = "requeue" | "leitner" | "expanding";
+
+export const VOCAB_MODES: VocabExerciseMode[] = [
+  "requeue",
+  "leitner",
+  "expanding",
+];
+
+export const MODE_LABELS: Record<VocabExerciseMode, string> = {
+  requeue: "Sorvégi ismétlés",
+  leitner: "Fokozatos (Leitner)",
+  expanding: "Bővülő adag",
+};
+
+export const MODE_DESCRIPTIONS: Record<VocabExerciseMode, string> = {
+  requeue: "A rossz szó a sor végére kerül, nincs újrakezdés. Egy helyes válasz elég.",
+  leitner: "Egy szó akkor kész, ha kétszer egymás után tudtad; a rossz nullázza.",
+  expanding: "Kis adaggal indulsz; minden megtanult szó helyére új csúszik be.",
+};
+
 import { vocabularyMay } from "./vocabulary-may";
 import { vocabularyApril } from "./vocabulary-april";
 

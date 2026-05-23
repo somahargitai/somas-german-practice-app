@@ -8,6 +8,10 @@ import {
   WordType,
   MONTH_LABELS,
   TYPE_LABELS,
+  VocabExerciseMode,
+  VOCAB_MODES,
+  MODE_LABELS,
+  MODE_DESCRIPTIONS,
 } from "@/lib/vocabulary";
 
 const ALL_MONTHS: Month[] = ["may", "april"];
@@ -20,6 +24,9 @@ export default function VocabularyStartPage() {
   );
   const [selectedTypes, setSelectedTypes] = useState<Set<WordType>>(
     new Set(ALL_TYPES)
+  );
+  const [selectedMode, setSelectedMode] = useState<VocabExerciseMode>(
+    "expanding"
   );
 
   const matched = useMemo(
@@ -54,7 +61,9 @@ export default function VocabularyStartPage() {
   const handleStart = () => {
     const months = Array.from(selectedMonths).join(",");
     const types = Array.from(selectedTypes).join(",");
-    router.push(`/vocabulary/practice?months=${months}&types=${types}`);
+    router.push(
+      `/vocabulary/practice?months=${months}&types=${types}&mode=${selectedMode}`
+    );
   };
 
   return (
@@ -156,6 +165,56 @@ export default function VocabularyStartPage() {
                       {checked ? "✓" : ""}
                     </span>
                     <span className="font-medium">{TYPE_LABELS[t]}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Exercise mode */}
+          <section>
+            <h2 className="text-lg font-bold mb-4 text-black dark:text-white">
+              Gyakorlási mód
+            </h2>
+            <div className="grid grid-cols-1 gap-3">
+              {VOCAB_MODES.map((m) => {
+                const checked = selectedMode === m;
+                return (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setSelectedMode(m)}
+                    className={`
+                      flex items-start gap-3 px-4 py-3
+                      border-2 border-black dark:border-white
+                      text-left
+                      transition-colors
+                      ${
+                        checked
+                          ? "bg-black text-white dark:bg-white dark:text-black"
+                          : "bg-white text-black dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+                      }
+                    `}
+                  >
+                    <span
+                      className={`
+                        mt-0.5 inline-block w-5 h-5 border-2 shrink-0
+                        ${checked ? "border-white dark:border-black bg-white dark:bg-black" : "border-black dark:border-white"}
+                        flex items-center justify-center text-xs font-bold
+                        ${checked ? "text-black dark:text-white" : ""}
+                      `}
+                      aria-hidden
+                    >
+                      {checked ? "✓" : ""}
+                    </span>
+                    <span className="flex flex-col">
+                      <span className="font-medium">{MODE_LABELS[m]}</span>
+                      <span
+                        className={`text-xs ${checked ? "opacity-70" : "text-gray-500 dark:text-gray-400"}`}
+                      >
+                        {MODE_DESCRIPTIONS[m]}
+                      </span>
+                    </span>
                   </button>
                 );
               })}

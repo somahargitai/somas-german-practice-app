@@ -10,6 +10,8 @@ interface SequentialConjugationHeaderProps {
   language: "hu" | "de";
   onLanguageToggle: () => void;
   title?: string;
+  progressLeftLabel?: string;
+  progressRightLabel?: string;
 }
 
 export function SequentialConjugationHeader({
@@ -19,6 +21,8 @@ export function SequentialConjugationHeader({
   language,
   onLanguageToggle,
   title,
+  progressLeftLabel,
+  progressRightLabel,
 }: SequentialConjugationHeaderProps) {
   const router = useRouter();
 
@@ -53,7 +57,13 @@ export function SequentialConjugationHeader({
           {language === "hu" ? "🇩🇪 Német" : "🇭🇺 Magyar"}
         </button>
       </div>
-      <ProgressBar currentIndex={currentIndex} furthestIndex={furthestIndex} total={total} />
+      <ProgressBar
+        currentIndex={currentIndex}
+        furthestIndex={furthestIndex}
+        total={total}
+        leftLabel={progressLeftLabel}
+        rightLabel={progressRightLabel}
+      />
     </header>
   );
 }

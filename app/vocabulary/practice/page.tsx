@@ -9,6 +9,9 @@ import {
   WordType,
   MONTH_LABELS,
   TYPE_LABELS,
+  VocabExerciseMode,
+  VOCAB_MODES,
+  MODE_LABELS,
 } from "@/lib/vocabulary";
 
 const VALID_MONTHS: Month[] = ["april", "may"];
@@ -38,6 +41,13 @@ function PracticeInner() {
 
   const words = useMemo(() => filterVocabulary(months, types), [months, types]);
 
+  const mode = useMemo<VocabExerciseMode>(() => {
+    const raw = params.get("mode");
+    return (VOCAB_MODES as string[]).includes(raw ?? "")
+      ? (raw as VocabExerciseMode)
+      : "expanding";
+  }, [params]);
+
   const monthLabel =
     months.length === VALID_MONTHS.length
       ? "minden hónap"
@@ -46,9 +56,9 @@ function PracticeInner() {
     types.length === VALID_TYPES.length
       ? "minden szófaj"
       : types.map((t) => TYPE_LABELS[t]).join(", ");
-  const title = `Szókincs – ${monthLabel} · ${typeLabel}`;
+  const title = `${monthLabel} · ${typeLabel} · ${MODE_LABELS[mode]}`;
 
-  return <VocabularyExercisePage words={words} title={title} />;
+  return <VocabularyExercisePage words={words} mode={mode} title={title} />;
 }
 
 export default function VocabularyPracticePage() {

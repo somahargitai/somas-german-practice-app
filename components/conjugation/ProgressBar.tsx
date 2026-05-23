@@ -4,9 +4,17 @@ interface ProgressBarProps {
   currentIndex: number;
   furthestIndex: number;
   total: number;
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
-export function ProgressBar({ currentIndex, furthestIndex, total }: ProgressBarProps) {
+export function ProgressBar({
+  currentIndex,
+  furthestIndex,
+  total,
+  leftLabel,
+  rightLabel,
+}: ProgressBarProps) {
   const currentPercent = (currentIndex / total) * 100;
   const furthestPercent = (furthestIndex / total) * 100;
 
@@ -25,8 +33,8 @@ export function ProgressBar({ currentIndex, furthestIndex, total }: ProgressBarP
         />
       </div>
       <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
-        <span>Jelenlegi: {currentIndex + 1}/{total}</span>
-        <span>Legjobb: {furthestIndex + 1}/{total}</span>
+        <span>{leftLabel ?? `Jelenlegi: ${currentIndex + 1}/${total}`}</span>
+        <span>{rightLabel ?? `Legjobb: ${furthestIndex + 1}/${total}`}</span>
       </div>
     </div>
   );

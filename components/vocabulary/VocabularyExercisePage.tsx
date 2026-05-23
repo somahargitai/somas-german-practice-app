@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { VocabularyWord } from "@/lib/vocabulary";
+import { VocabularyWord, VocabExerciseMode } from "@/lib/vocabulary";
 import { SequentialConjugationHeader } from "../conjugation/SequentialConjugationHeader";
 import { ConjugationFooter } from "../conjugation/ConjugationFooter";
 import { VocabularyContent } from "./VocabularyContent";
@@ -11,34 +11,40 @@ type Language = "hu" | "de";
 
 interface VocabularyExercisePageProps {
   words: VocabularyWord[];
+  mode: VocabExerciseMode;
   title?: string;
 }
 
 export function VocabularyExercisePage({
   words,
+  mode,
   title,
 }: VocabularyExercisePageProps) {
   const [language, setLanguage] = useState<Language>("de");
   const {
     isShowing,
     setIsShowing,
-    currentIndex,
-    furthestIndex,
+    currentWord,
     isCompleted,
-    shuffledIndices,
+    learnedCount,
+    total,
+    poolSize,
+    reserveCount,
     handleShowOrNext,
     handleCorrect,
     handleReshuffle,
-  } = useVocabularyExerciseState({ words });
+  } = useVocabularyExerciseState({ words, mode });
 
   const toggleLanguage = () => {
     setLanguage(language === "hu" ? "de" : "hu");
     setIsShowing(false);
   };
 
-  const safeCurrentIndex = Math.min(currentIndex, shuffledIndices.length - 1);
-  const safeWordIndex = shuffledIndices[safeCurrentIndex] ?? 0;
-  const currentWord = !isCompleted ? words[safeWordIndex] : null;
+  const progressLeftLabel = `Megtanult: ${learnedCount}/${total}`;
+  const progressRightLabel =
+    mode === "expanding"
+      ? `Adag: ${poolSize} · Vár: ${reserveCount}`
+      : `Hátralévő: ${poolSize}`;
 
   if (words.length === 0) {
     return (
@@ -58,12 +64,14 @@ export function VocabularyExercisePage({
   return (
     <div className="min-h-screen bg-white dark:bg-black grid grid-rows-[auto_1fr_auto]">
       <SequentialConjugationHeader
-        currentIndex={currentIndex}
-        furthestIndex={furthestIndex}
-        total={words.length}
+        currentIndex={learnedCount}
+        furthestIndex={learnedCount}
+        total={total}
         language={language}
         onLanguageToggle={toggleLanguage}
         title={title}
+        progressLeftLabel={progressLeftLabel}
+        progressRightLabel={progressRightLabel}
       />
 
       <main className="px-4 py-6 md:px-8 md:py-8 overflow-y-auto md:flex md:items-center md:justify-center">
@@ -75,19 +83,19 @@ export function VocabularyExercisePage({
                 Gratulálok!
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                Mind a {words.length} szót átnézted!
+                Mind a {total} szót megtanultad!
               </p>
               <p className="text-base text-gray-600 dark:text-gray-400">
                 Készen állsz az újrakezdésre?
               </p>
             </div>
-          ) : (
+          ) : currentWord ? (
             <VocabularyContent
-              word={currentWord!}
+              word={currentWord}
               language={language}
               isShowing={isShowing}
             />
-          )}
+          ) : null}
 
           {/* Desktop buttons */}
           <div className="hidden md:flex gap-3 w-full">
